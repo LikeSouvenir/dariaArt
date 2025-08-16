@@ -1,0 +1,73 @@
+import Header from "../header/Header";
+import About from "./boxes/About";
+import Contacts from "./boxes/Contacts";
+import Container from "react-bootstrap/Container";
+import {Image} from "react-bootstrap";
+
+export default function Welcome() {
+    return (
+        <>
+            <header>
+                <Header/>
+            </header>
+
+            <div className="is-double-column pb-5">
+                <Container className="text-center px-5">
+                    <h2 className="title fw-bold fs-1">Дарья Бургонова</h2>
+                    <p>
+                        Добро пожаловать! Меня зовут Дарья, я художница,
+                        глубоко вдохновлённая природой и искусством повествования.
+                        В своих картинах я оживляю персонажей, запечатлевая красоту
+                        повседневного и раскрывая необычное в простых жестах и выражениях.
+                    </p>
+                    <p>
+                        Мои работы стремятся к взаимопониманию и размышлению, предлагая
+                        зрителям взглянуть на мир и друг на друга по-новому.
+                        Присоединяйтесь ко мне в этом творческом путешествии, где
+                        мы исследуем гармонию искусства и природы, открывая
+                        новые перспективы и истории.
+                    </p>
+                </Container>
+                <Container className="text-center">
+                    <Image
+                        className="main-img"
+                        width="100%"
+                        height="100%"
+                        src="./src/assets/examples/daria_best_heirstyle.jpg"
+                    />
+                </Container>
+            </div>
+            <div className="examples">
+                <h3 className="text-center fw-bold fs-2">Примеры работ</h3>
+                <div className="short-work-galary">
+                    <Image
+                    className="galary-item"
+                    src="./src/assets/examples/musia-1.jpg"
+                    />
+                    <Image
+                        className="galary-item"
+                        src="./src/assets/examples/musia-2.jpg"
+                    />
+                    <Image
+                        className="galary-item"
+                        src="./src/assets/examples/musia-3.jpg"
+                    />
+                    <Image
+                        className="galary-item"
+                        src="./src/assets/examples/musia-4.jpg"
+                    />
+                    <Image
+                        className="galary-item"
+                        src="./src/assets/examples/musia-5.jpg"
+                    />
+                    <Image
+                        className="galary-item"
+                        src="./src/assets/examples/musia-6.jpg"
+                    />
+                </div>
+            </div>
+            {/*<About/>*/}
+            {/*<Contacts/>*/}
+        </>
+    )
+}

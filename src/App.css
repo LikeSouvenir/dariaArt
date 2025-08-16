@@ -1,0 +1,60 @@
+#root {
+  /*max-width: 1280px;*/
+  margin: 0 auto;
+   padding: 2rem;
+  /* text-align: center; */
+}
+#header {
+    max-width: 100%;
+}
+.is-double-column {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+}
+@media (max-width: 768px) {
+    .is-double-column {
+        flex-direction: column; /* Колонки становятся вертикально */
+        gap: 20px;
+    }
+}
+.main-img {
+    max-width: 100%;
+    height: auto;
+}
+/*     Примеры работ    */
+.short-work-galary{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+.galary-item{
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */;
+    transition: transform 0.3s ease; /* Анимация при наведении */
+    gap: 10px;
+}
+.galary-item:hover{
+    transform: scale(1.1);
+}
+.galary-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+.gallery-item.vertical {
+    grid-row: span 2; /* Занимает 2 строки */
+}
+.gallery-item.horizontal {
+    grid-column: span 2; /* Занимает 2 колонки */
+}
+/* Адаптивность: на мобильных — 1 колонка */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
