@@ -1,0 +1,20 @@
+.my-masonry-grid {
+    display: flex;
+    margin-left: -20px; /* Отступ между колонками */
+    width: auto;
+}
+.my-masonry-grid_column {
+    padding-left: 20px; /* Отступ между колонками */
+    background-clip: padding-box;
+}
+.gallery-item {
+    margin-bottom: 20px; /* Отступ между карточками */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}

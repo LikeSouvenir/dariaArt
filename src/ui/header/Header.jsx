@@ -8,7 +8,7 @@ export default function Header() {
             <Navbar sticky='top'>
                 <Container fluid>
                     <img
-                        src="./src/assets/logo.png"
+                        src="/src/assets/logo.png"
                         width="90"
                         height="90"
                         className="d-inline-block align-top"

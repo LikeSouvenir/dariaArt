@@ -1,8 +1,8 @@
 import Header from "../header/Header";
-import About from "./boxes/About";
-import Contacts from "./boxes/Contacts";
 import Container from "react-bootstrap/Container";
 import {Image} from "react-bootstrap";
+import Gallery from "./gallery/Gallery.jsx";
+import Gallery_M from "./gallery_masonry/Gallery_M.jsx";
 
 export default function Welcome() {
     return (
@@ -37,37 +37,8 @@ export default function Welcome() {
                     />
                 </Container>
             </div>
-            <div className="examples">
-                <h3 className="text-center fw-bold fs-2">Примеры работ</h3>
-                <div className="short-work-galary">
-                    <Image
-                    className="galary-item"
-                    src="./src/assets/examples/musia-1.jpg"
-                    />
-                    <Image
-                        className="galary-item"
-                        src="./src/assets/examples/musia-2.jpg"
-                    />
-                    <Image
-                        className="galary-item"
-                        src="./src/assets/examples/musia-3.jpg"
-                    />
-                    <Image
-                        className="galary-item"
-                        src="./src/assets/examples/musia-4.jpg"
-                    />
-                    <Image
-                        className="galary-item"
-                        src="./src/assets/examples/musia-5.jpg"
-                    />
-                    <Image
-                        className="galary-item"
-                        src="./src/assets/examples/musia-6.jpg"
-                    />
-                </div>
-            </div>
-            {/*<About/>*/}
-            {/*<Contacts/>*/}
+            {/*<Gallery/>*/}
+            <Gallery_M/>
         </>
     )
 }
