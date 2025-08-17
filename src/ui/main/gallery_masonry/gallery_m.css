@@ -18,3 +18,40 @@
     height: auto;
     display: block;
 }
+/* Затемнение и кнопка */
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px; /* Высота затемнения */
+    background: linear-gradient(
+            to bottom,
+            transparent,
+            rgba(0, 0, 0, 1)
+    );
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+.show-more-button {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.show-more-button:hover {
+    transform: scale(1.05);
+}
+/* Следующий блок */
+.gallery-container {
+    position: relative; /* Контекст для абсолютного позиционирования overlay */
+    overflow: hidden;   /* Обрезаем всё, что выходит за границы */
+    transition: max-height 0.5s ease; /* Плавное раскрытие */
+}
