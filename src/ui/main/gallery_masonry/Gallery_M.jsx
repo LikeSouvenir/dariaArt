@@ -34,7 +34,7 @@ export default function Gallery_M() {
     };
     return (
         <div>
-            <h3 className="text-center p-5">Подборка работ</h3>
+            <h3 className="fw-medium fs-2 text-center p-5">Подборка работ</h3>
             <div className="gallery-container"
                  ref={galleryRef}
                  style={{maxHeight: !showAll ? maxHeight : "none"}}>
