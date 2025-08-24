@@ -10,18 +10,19 @@ export default function Header() {
             <Navbar sticky="top" className="fw-medium bg-white">
                 <Container fluid>
                     <img
-                        src="/src/assets/logo.png"
+                        src="/src/assets/logo_2.png"
                         width="90"
                         height="90"
                         className="d-inline-block align-top"
                         alt="Дарья Вишнякова logo"
                     />
-                    <Navbar.Brand onClick={() => navigate("/")}>𝘿𝙖𝙧𝙞𝙖 𝘽𝙪𝙧𝙜𝙤𝙣𝙤𝙫𝙖 𝘼𝙧𝙩</Navbar.Brand>
+                    <Navbar.Brand onClick={() => navigate("/")}>𝘿𝙖𝙧𝙞𝙖 𝘼𝙧𝙩</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-                    <Navbar.Collapse id="bg-body-tertiar">
+                    <Navbar.Collapse id="bg-body-tertiar" className=" mx-5">
                         <Nav className="justify-content-end flex-grow-2">
+                            <Nav.Link onClick={() => navigate("/")}>Главная</Nav.Link>
                             <Nav.Link onClick={() => navigate("/about")}>Обо мне</Nav.Link>
-                            <Nav.Link onClick={() => navigate("/examples")}>Портфолео</Nav.Link>
+                            <Nav.Link onClick={() => navigate("/examples")}>Портфолио</Nav.Link>
                             <Nav.Link onClick={() => navigate("/contacts")}>Контакты</Nav.Link>
                         </Nav>
                         <Nav className="justify-content-end flex-grow-1">
