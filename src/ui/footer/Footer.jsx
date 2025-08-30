@@ -8,7 +8,6 @@ import {Container} from '@mui/material';
 export default function Footer() {
     const navigate = useNavigate();
 
-
     function sendExamples(e) {
         e.preventDefault();
         console.log("sendExamples");

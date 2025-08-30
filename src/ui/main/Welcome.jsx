@@ -1,7 +1,7 @@
 import Header from "../header/Header";
 import Container from "react-bootstrap/Container";
 import Gallery_M from "./gallery_masonry/Gallery_M.jsx";
-import Footer from "../Footer/Footer.jsx";
+import Footer from "../footer/Footer.jsx";
 
 export default function Welcome() {
 
@@ -31,7 +31,7 @@ export default function Welcome() {
                     <img
                         className="footer_reveal-1"
                         width="100%"
-                        height="100%"
+                        height="90%"
                         src="./src/assets/daria_best_heirstyle.jpg"
                     />
                 </Container>

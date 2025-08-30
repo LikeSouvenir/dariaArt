@@ -1,5 +1,5 @@
 import Header from "../header/Header.jsx";
-import Footer from "../Footer/Footer.jsx";
+import Footer from "../footer/Footer.jsx";
 import Gallery_M from "./gallery_masonry/Gallery_M.jsx";
 import {Tab, Tabs} from "react-bootstrap";
 import SortedGallery from "./sorted_gallery/SortedGallery.jsx";
