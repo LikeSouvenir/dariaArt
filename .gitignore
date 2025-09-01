@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 /dariaReact/node_modules
+/backend/node_modules
 dist
 dist-ssr
 *.local
@@ -26,3 +27,5 @@ dist-ssr
 
 /dariaReact/src/assets/examples
 .env
+/dariaReact/.env
+/backend/img

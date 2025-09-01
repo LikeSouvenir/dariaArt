@@ -2,10 +2,10 @@ import {createContext, useState} from "react";
 
 const AppContext = createContext({})
 const AppProvider = ({children}) => {
-    const [merchants, setMerchants] = useState(false);
+    /**/const [merchants, setMerchants] = useState(false);/**/
 
     // тестовая
-    function getMerchant() {
+    /**/function getMerchant() {
         fetch('http://localhost:3001')
             .then(response => {
                 return response.text();
@@ -13,7 +13,7 @@ const AppProvider = ({children}) => {
             .then(data => {
                 setMerchants(data + " context.js ");
             });
-    }
+    }/**/
 
     async function getExamples(mail) {
         return await fetch('http://localhost:3001/getExamples', {
@@ -33,7 +33,7 @@ const AppProvider = ({children}) => {
     }
 
     const value = {
-        merchants, getMerchant, getExamples
+        /**/merchants/**/, getMerchant, getExamples
     }
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }

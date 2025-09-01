@@ -22,7 +22,7 @@ export default function Welcome() {
             <div className="is-double-column">
                 <Container className="text-center">
                     <div className="container w-75">
-                        <h2 className="title fw-bold fs-1 text-muted">Дарья Вишнякова</h2>
+                        <h2 className="title fw-bold fs-1 text-muted">Дарья Вишнякова JWT TOKEN</h2>
                         <p>
                             Добро пожаловать! Меня зовут Дарья, я художница,
                             глубоко вдохновлённая природой и искусством повествования.
