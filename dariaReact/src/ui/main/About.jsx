@@ -6,7 +6,7 @@ export default function About() {
     return (
         <>
             <Header/>
-            <div className="container text-center w-50 vh-100">
+            <div className="container text-center w-50">
                 <p>
                     Рики Михилс — кастинг-директор и основатель модельного агентства из Нью-Йорка, сотрудничающий с
                     ведущими клиентами из мира моды и красоты по всему миру. Известный тем, что открывает и

@@ -1,16 +1,22 @@
 import {useNavigate} from "react-router-dom";
-import {Form} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import {Container} from '@mui/material';
+import {useContext, useState} from "react";
+import {AppContext} from "../../core/Context.jsx";
 
 
 export default function Footer() {
     const navigate = useNavigate();
+    const {getExamples} = useContext(AppContext);
+    const [message, setMessage] = useState("");
 
-    function sendExamples(e) {
+    async function sendExamples(e) {
         e.preventDefault();
-        console.log("sendExamples");
+        const val = await getExamples(e.target[0].value)
+        console.log("val        " + val)
+        setMessage("Портфолео отправлено");
     }
 
     return (
@@ -32,9 +38,15 @@ export default function Footer() {
                     </Container>
                     <Container className="text-center">
                         <Form onSubmit={sendExamples}>
-                            <Form.Group className="mb-3 w-50" controlId="formBasicEmail">
+                            <Form.Group className="mb-3 w-50" controlId="sendToEmail">
                                 <p className="text-lg-start">Получить портфолео</p>
-                                <Form.Control type="email" placeholder="example@mail.ru"/>
+                                <div className="is-double-column">
+                                    <Form.Control type="email" placeholder="example@mail.ru"/>
+                                    <Button variant="info mx-2" type="submit">Получить</Button>
+                                </div>
+                                <div className="text-start">
+                                    {message ? <Form.Text>{message}</Form.Text> : null}
+                                </div>
                             </Form.Group>
                         </Form>
                     </Container>

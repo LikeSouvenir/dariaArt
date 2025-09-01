@@ -13,6 +13,8 @@ export default function SortedGallery() {
     }
 
     function getTEST() {
+
+        // при открытие запоминать где находиться экран, и при закрытие возвращатся туда же
         return (
             <>
                 <div className="////////////////////////////////////////////////////////">
@@ -34,12 +36,14 @@ export default function SortedGallery() {
                             </Container>
                         </div>
                         <div className="text-center usefull-links">
+                            <Collapse in={open}>
+                                <div className="pt-3 px-2">
+                                    <Gallery_M/>
+                                </div>
+                            </Collapse>
                             <div className="arrow">{">"}<i className="flaticon-down-arrow"></i></div>
                         </div>
                     </btn>
-                    <Collapse in={open}>
-                        <Gallery_M/>
-                    </Collapse>
                 </div>
             </>
         );
@@ -48,8 +52,6 @@ export default function SortedGallery() {
     //карусель
     return (
         <>
-            {getTEST()}
-            {getTEST()}
             {getTEST()}
         </>
     )
