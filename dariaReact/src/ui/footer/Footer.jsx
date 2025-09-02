@@ -9,7 +9,7 @@ import {AppContext} from "../../core/Context.jsx";
 
 export default function Footer() {
     const navigate = useNavigate();
-    const {getExamples, check} = useContext(AppContext);
+    const {getExamples} = useContext(AppContext);
     const [message, setMessage] = useState("");
 
     async function sendExamples(e) {
@@ -23,7 +23,7 @@ export default function Footer() {
         <>
             <div className="footer_img">
                 <div className="is-double-column pt-5 bg-white">
-                    <Button variant="info mx-2" onClick={() => console.log(check())}>Получить</Button>
+                    {/*<Button variant="info mx-2" onClick={() => console.log(check())}>Получить</Button>*/}
                     <Container className="text-center">
                         <Navbar.Brand onClick={() => navigate("/")}>𝘿𝙖𝙧𝙞𝙖 𝘼𝙧𝙩</Navbar.Brand>
                         <Nav className="justify-content-center flex-grow-1 pt-2">

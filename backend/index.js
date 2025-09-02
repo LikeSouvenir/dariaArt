@@ -13,15 +13,12 @@ app.use(function (req, res, next) {
 )
 
 app.get('/', (req, res) => {
-    db.check()
-        .then(response => {
-            console.log("response is work, file = index.html");
-            res.status(200).send(response + "index.js");
-        })
-        .catch(error => {
-            console.log("error isn't work, file = index.html");
-            res.status(500).send(error);
-        })
+    db.check().then(response => {
+        res.status(200).send(response);
+    }).catch(error => {
+        console.log("index.js error", error);
+        res.status(500).send(error);
+    })
 })
 
 app.post('/getExamples', (req, res) => {
@@ -29,11 +26,11 @@ app.post('/getExamples', (req, res) => {
         // console.log(typeof(result));
         res.status(200).send(result);
     }).catch(error => {
-        console.log("error isn't work, file = index.html : " + error);
+        console.log("error script isn't work, file = index.html : " + error);
         res.status(500).send("error - bad email");
     });
 })
 
-app.listen(process.env.PORT, () => {
-    console.log(`App running on the port ${process.env.PORT}.`)
+app.listen(5012, () => {
+    console.log(`App running on the port 5012.`)
 })

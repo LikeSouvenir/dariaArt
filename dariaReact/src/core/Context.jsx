@@ -1,22 +1,11 @@
-import {createContext, useState} from "react";
+import {createContext} from "react";
 
 const AppContext = createContext({})
 const AppProvider = ({children}) => {
-    /**/const [merchants, setMerchants] = useState(false);/**/
 
-    // тестовая
-    /**/function getMerchant() {
-        fetch('http://localhost:3001')
-            .then(response => {
-                return response.text();
-            })
-            .then(data => {
-                setMerchants(data + " context.js ");
-            });
-    }/**/
 
     async function getExamples(mail) {
-        return await fetch('http://localhost:3001/getExamples', {
+        return await fetch('http://localhost:5012/getExamples', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,7 +22,7 @@ const AppProvider = ({children}) => {
     }
 
     const value = {
-        /**/merchants/**/, getMerchant, getExamples
+        getExamples
     }
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }
