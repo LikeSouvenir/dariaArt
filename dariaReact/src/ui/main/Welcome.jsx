@@ -1,6 +1,6 @@
 import Header from "../header/Header";
 import Container from "react-bootstrap/Container";
-import Gallery_M from "./gallery_masonry/Gallery_M.jsx";
+// import Gallery_M from "./gallery_masonry/Gallery_M.jsx";
 import Footer from "../footer/Footer.jsx";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";
@@ -52,7 +52,7 @@ export default function Welcome() {
             <div className="gallery-container"
                  ref={galleryRef}
                  style={{maxHeight}}>
-                <Gallery_M/>
+                {/*<Gallery_M path={'/src/assets/examples/*.{jpg,png,webp}'}/>*/}
                 <div className="gallery-overlay">
                     <button
                         className="show-more-button"

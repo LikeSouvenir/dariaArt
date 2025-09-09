@@ -1,12 +1,19 @@
-import {Form, InputGroup} from "react-bootstrap";
+import {Button, Form, InputGroup} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Header from "../header/Header.jsx";
 import Footer from "../footer/Footer.jsx";
+import {useContext, useState} from "react";
+import {AppContext} from "../../core/Context.jsx";
 
 export default function Contacts() {
-    function sendEmailQuestion(e) {
+    const {sendMessage} = useContext(AppContext);
+    const [message, setMessage] = useState("");
+
+    async function sendEmailQuestion(e) {
         e.preventDefault();
-        console.log("Sending email question...");
+
+        const val = await sendMessage(e.target[0].value, e.target[1].value);
+        setMessage(val ? "Успешно отправлено" : "Ошибка, пиьсмо не отправлено");
     }
     return (
         <>
@@ -18,7 +25,7 @@ export default function Contacts() {
                         className="main-img"
                         width="100%"
                         height="100%"
-                        src="./src/assets/daria_with_queen.jpg"
+                        src="./src/assets/daria_best_heirstyle.jpg"
                     />
                 </Container>
                 <Container className="text-center px-5">
@@ -31,6 +38,12 @@ export default function Contacts() {
                         <InputGroup>
                             <Form.Control as="textarea"/>
                         </InputGroup>
+                        <div className="d-grid">
+                            <Button variant="info mt-2" size="lg" type="submit">Получить</Button>
+                        </div>
+                        <div className="text-start">
+                            {message ? <Form.Text>{message}</Form.Text> : null}
+                        </div>
                     </Form>
                     <div className="container text-center pt-4">
                         <div className="row align-items-start">

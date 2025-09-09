@@ -8,6 +8,16 @@ CREATE TABLE examples
         deleted    date,
         is_visible boolean default true
     );
+CREATE TABLE works
+    (
+        id serial primary key,
+        name varchar(255),
+        description varchar(512),
+        path varchar(100) not null
+    );
+INSERT INTO works (name, description, path) VALUES
+    ('Френк Герберт - Дюна', '', '/a/'),
+    ('Джон Стейнбек - Зима тревоги нашей', '', '/s/');
 CREATE TABLE want_examples
     (
         id      serial primary key,
@@ -33,14 +43,14 @@ CREATE TABLE is_illustration
     );
 -- счетчик на иконки соц.сетей?
 INSERT INTO examples (img_path, created, is_visible)
-values ('/background/img/a1', current_timestamp, true),
-       ('/background/img/a2', current_timestamp, true),
-       ('/background/img/a3', current_timestamp, true),
-       ('/background/img/a4', current_timestamp, true),
-       ('/background/img/s1', current_timestamp, true),
-       ('/background/img/s2', current_timestamp, true),
-       ('/background/img/s3', current_timestamp, true),
-       ('/background/img/s4', current_timestamp, true),
-       ('/background/img/a5', current_timestamp, true),
-       ('/background/img/s6', current_timestamp, true)
+VALUES ('/img/a/a', current_timestamp, true),
+       ('/img/a/a1', current_timestamp, true),
+       ('/img/a/a2', current_timestamp, true),
+       ('/img/a/a3', current_timestamp, true),
+       ('/img/a/a4', current_timestamp, true),
+       ('/img/s/s1', current_timestamp, true),
+       ('/img/s/s2', current_timestamp, true),
+       ('/img/s/s3', current_timestamp, true),
+       ('/img/s/s4', current_timestamp, true),
+       ('/img/s/s6', current_timestamp, true)
 ;

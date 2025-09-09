@@ -3,26 +3,66 @@ import {createContext} from "react";
 const AppContext = createContext({})
 const AppProvider = ({children}) => {
 
-
-    async function getExamples(mail) {
+    async function getExamples(email) {
         return await fetch('http://localhost:5012/getExamples', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                email: mail,
+                email,
+            })
+        }).then(response => {
+            return response.ok;
+        })
+    }
+
+    async function sendMessage(email, message) {
+        return await fetch('http://localhost:5012/sendMessage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email,
+                message,
             })
         }).then(response => {
             return response.text();
         }).then(data => {
-            console.log("fetch       " + data);
+            return data;
+        });
+    }
+
+    async function getWorks() {
+        return await fetch(`http://localhost:5012/getWorks`)
+        .then(async response => {
+            return await response.json();
+        }).then(data => {
+            console.log(data);
+            return data;
+        });
+    }
+
+    async function getPaths(name) {
+        return await fetch('http://localhost:5012/getPaths', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name,
+            })
+        }).then(response => {
+            console.log("response ! asdasdasdasdasd")
+            return response.text();
+        }).then(data => {
             return data;
         });
     }
 
     const value = {
-        getExamples
+        getExamples, sendMessage, getPaths, getWorks
     }
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }

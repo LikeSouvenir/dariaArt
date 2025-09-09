@@ -14,9 +14,9 @@ export default function Footer() {
 
     async function sendExamples(e) {
         e.preventDefault();
+
         const val = await getExamples(e.target[0].value)
-        console.log("val        " + val)
-        setMessage("Портфолео отправлено");
+        setMessage(val ? "Портфолео отправлено" : "Ошибка, пиьсмо не отправлено");
     }
 
     return (

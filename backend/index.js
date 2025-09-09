@@ -11,12 +11,29 @@ app.use(function (req, res, next) {
         next();
     }
 )
-
-app.get('/', (req, res) => {
-    db.check().then(response => {
+app.get("/getWorks", (req, res) => {
+    db.getWorks().then(response => {
         res.status(200).send(response);
     }).catch(error => {
-        console.log("index.js error", error);
+        console.log("index.js error /getWorks", error);
+        res.status(500).send(error);
+    })
+})
+    // запрос из бд на выборку
+app.get("/getPaths", (req, res) => {
+    db.getPaths(req.body.name).then(response => {
+        res.status(200).send(response);
+    }).catch(error => {
+        console.log("index.js error /getPaths", error);
+        res.status(500).send(error);
+    })
+})
+
+app.post('/sendMessage', (req, res) => {
+    db.sendMessage(req.body.email, req.body.message).then(response => {
+        res.status(200).send(response);
+    }).catch(error => {
+        console.log("index.js error /sendMessage", error);
         res.status(500).send(error);
     })
 })
@@ -26,7 +43,7 @@ app.post('/getExamples', (req, res) => {
         // console.log(typeof(result));
         res.status(200).send(result);
     }).catch(error => {
-        console.log("error script isn't work, file = index.html : " + error);
+        console.log("error script isn't work, file = index.html /getExamples: " + error);
         res.status(500).send("error - bad email");
     });
 })
