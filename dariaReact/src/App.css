@@ -116,14 +116,11 @@
     width: 100%;
 }
 
-i.flaticon-down-arrow {
-    position: absolute;
-    right: 15px;
-    bottom: 0px;
-}
-
 .arrow {
     transform: rotate(90deg);
+}
+.arrow-open {
+    transform: rotate(-90deg);
 }
 
 .info-div .active i {

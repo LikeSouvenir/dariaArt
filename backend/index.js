@@ -20,11 +20,12 @@ app.get("/getWorks", (req, res) => {
     })
 })
     // запрос из бд на выборку
-app.get("/getPaths", (req, res) => {
-    db.getPaths(req.body.name).then(response => {
+app.get("/getPathsImages/:path", (req, res) => {
+    db.getPathsImages(req.params.path).then(response => {
+        console.log("сделать ограничение на конкретные слова sql")
         res.status(200).send(response);
     }).catch(error => {
-        console.log("index.js error /getPaths", error);
+        console.log("index.js error /getPathsImages", error);
         res.status(500).send(error);
     })
 })

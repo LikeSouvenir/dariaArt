@@ -44,25 +44,17 @@ const AppProvider = ({children}) => {
         });
     }
 
-    async function getPaths(name) {
-        return await fetch('http://localhost:5012/getPaths', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name,
-            })
-        }).then(response => {
-            console.log("response ! asdasdasdasdasd")
-            return response.text();
+    async function getImages(path) {
+        console.log("getImages")
+        return await fetch(`http://localhost:5012/getPathsImages/${path}`).then(response => {
+            return response.json();
         }).then(data => {
             return data;
         });
     }
 
     const value = {
-        getExamples, sendMessage, getPaths, getWorks
+        getExamples, sendMessage, getImages, getWorks
     }
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }

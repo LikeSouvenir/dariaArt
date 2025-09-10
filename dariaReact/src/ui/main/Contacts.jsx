@@ -23,8 +23,8 @@ export default function Contacts() {
                 <Container className="text-center">
                     <img
                         className="main-img"
-                        width="100%"
-                        height="100%"
+                        width="80%"
+                        height="70%"
                         src="./src/assets/daria_best_heirstyle.jpg"
                     />
                 </Container>

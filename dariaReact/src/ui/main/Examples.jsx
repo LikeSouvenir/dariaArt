@@ -3,7 +3,7 @@ import Footer from "../footer/Footer.jsx";
 import Gallery_M from "./gallery_masonry/Gallery_M.jsx";
 import {Button, Tab, Tabs} from "react-bootstrap";
 import SortedGallery from "./sorted_gallery/SortedGallery.jsx";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useState} from "react";
 import {AppContext} from "../../core/Context.jsx";
 
 

@@ -11,18 +11,17 @@ const getWorks = async () => {
     })
 }
 // получение конкретной работы
-const getPaths = async (name) => {
+const getPathsImages = async (path) => {
     // <Gallery_M path={'/src/assets/examples/*.{jpg,png,webp}'}/>
-    const defPath = "/backend/img/";
-    const imgExtensions = "/*.{jpg,png,webp}";
+    const defPath = "/img/";
+    const imgExtensions = "/%";
     return await new Promise(function (resolve, reject) {
-        // pool.query('SELECT * FROM examples WHERE img_path LIKE $1', [defPath + name + imgExtensions],
-        //     function (err, results) {
-        //         if (err)
-        //             reject(err);
-        //         resolve(results);
-        //     });
-        resolve("GET PATH DATABASE; ");
+        pool.query('SELECT * FROM examples WHERE img_path LIKE $1', [defPath + path + imgExtensions],
+            function (err, results) {
+                if (err)
+                    reject(err);
+                resolve(results.rows);
+            });
     })
 }
 
@@ -51,4 +50,4 @@ const sendMessage = async (mail, message) => {
     })
 }
 
-export {sendMessage, getExamples, getPaths, getWorks};
+export {sendMessage, getExamples, getPathsImages, getWorks};

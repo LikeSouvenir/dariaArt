@@ -28,4 +28,4 @@ dist-ssr
 /dariaReact/src/assets/examples
 backend/.env
 /dariaReact/.env
-/backend/img
+/dariaReact/img
