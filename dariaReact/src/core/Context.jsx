@@ -1,10 +1,11 @@
-import {createContext} from "react";
+import {createContext, useCallback} from "react";
 
 const AppContext = createContext({})
 const AppProvider = ({children}) => {
+    const BASE_URL = import.meta.env.VITE_API_URL;
 
     async function getExamples(email) {
-        return await fetch('http://localhost:5012/getExamples', {
+        return await fetch(`${BASE_URL}/getExamples`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -18,7 +19,7 @@ const AppProvider = ({children}) => {
     }
 
     async function sendMessage(email, message) {
-        return await fetch('http://localhost:5012/sendMessage', {
+        return await fetch(`${BASE_URL}/sendMessage`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,23 +36,27 @@ const AppProvider = ({children}) => {
     }
 
     async function getWorks() {
-        return await fetch(`http://localhost:5012/getWorks`)
-        .then(async response => {
-            return await response.json();
-        }).then(data => {
-            console.log(data);
-            return data;
-        });
+        return await fetch(`${BASE_URL}/getWorks`)
+            .then(async response => {
+                return await response.json();
+            }).then(data => {
+                console.log(data);
+                return data;
+            });
     }
 
-    async function getImages(path) {
-        console.log("getImages")
-        return await fetch(`http://localhost:5012/getPathsImages/${path}`).then(response => {
-            return response.json();
-        }).then(data => {
-            return data;
-        });
-    }
+    const getImages = useCallback(async(path) => {
+        return await fetch(`${BASE_URL}/getPathsImages/${path}`)
+            .then(response => {
+                return response.json();
+            }).then(data => {
+                console.log(data);
+                return data;
+            }).catch(err => {
+                console.log(err);
+                throw err;
+            });
+    }, []);
 
     const value = {
         getExamples, sendMessage, getImages, getWorks
@@ -59,4 +64,3 @@ const AppProvider = ({children}) => {
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }
 export {AppProvider, AppContext}
-// клик -> front -> context -> express(localhost:3001) -> db(query)

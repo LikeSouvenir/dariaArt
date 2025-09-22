@@ -8,16 +8,25 @@
     background-clip: padding-box;
 }
 .gallery-item {
-    margin-bottom: 20px; /* Отступ между карточками */
-    border-radius: 8px;
+    margin-bottom: 10px; /* Отступ между карточками */
+    border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .gallery-item img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
+    object-fit: cover;
+    transition: transform 0.3s ease; /* Анимация при наведении */
 }
+.gallery-item.vertical {
+    grid-row: span 2; /* Занимает 2 строки */
+}
+.gallery-item.horizontal {
+    grid-column: span 2; /* Занимает 2 колонки */
+}
+
 /* Затемнение и кнопка */
 .gallery-overlay {
     position: absolute;
@@ -45,13 +54,12 @@
     cursor: pointer;
     transition: transform 0.2s;
 }
-
-.show-more-button:hover {
-    transform: scale(1.05);
-}
 /* Следующий блок */
 .gallery-container {
     position: relative; /* Контекст для абсолютного позиционирования overlay */
     overflow: hidden;   /* Обрезаем всё, что выходит за границы */
     transition: max-height 0.5s ease; /* Плавное раскрытие */
+}
+.show-more-button:hover {
+    transform: scale(1.05);
 }

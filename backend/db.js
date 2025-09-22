@@ -14,9 +14,11 @@ const getWorks = async () => {
 const getPathsImages = async (path) => {
     // <Gallery_M path={'/src/assets/examples/*.{jpg,png,webp}'}/>
     const defPath = "/img/";
-    const imgExtensions = "/%";
+    const imgExtensions = "%";
+    console.log(defPath + path + imgExtensions)
+    const searchPath = `${defPath}${path}%`;
     return await new Promise(function (resolve, reject) {
-        pool.query('SELECT * FROM examples WHERE img_path LIKE $1', [defPath + path + imgExtensions],
+        pool.query('SELECT * FROM examples WHERE img_path LIKE $1', [searchPath],
             function (err, results) {
                 if (err)
                     reject(err);

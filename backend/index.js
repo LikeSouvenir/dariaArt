@@ -7,7 +7,7 @@ app.use(express.json())
 app.use(function (req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers', 'application/json');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
         next();
     }
 )
@@ -21,7 +21,9 @@ app.get("/getWorks", (req, res) => {
 })
     // запрос из бд на выборку
 app.get("/getPathsImages/:path", (req, res) => {
-    db.getPathsImages(req.params.path).then(response => {
+    const path = "all" ? "" : req.params.path;
+    console.log("path \t- \t" + path);
+    db.getPathsImages(path).then(response => {
         console.log("сделать ограничение на конкретные слова sql")
         res.status(200).send(response);
     }).catch(error => {

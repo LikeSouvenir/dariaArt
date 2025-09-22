@@ -28,41 +28,6 @@
     height: auto;
 }
 
-/*     Примеры работ    */
-.short-work-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 20px;
-}
-
-.gallery-item {
-    overflow: hidden;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */;
-    transition: transform 0.3s ease; /* Анимация при наведении */
-    gap: 10px;
-}
-
-.gallery-item:hover {
-    transform: scale(1.03);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-}
-
-.gallery-item.vertical {
-    grid-row: span 2; /* Занимает 2 строки */
-}
-
-.gallery-item.horizontal {
-    grid-column: span 2; /* Занимает 2 колонки */
-}
-
 /* Адаптивность: на мобильных — 1 колонка */
 @media (max-width: 768px) {
     .gallery {
@@ -70,41 +35,38 @@
     }
 }
 
-.footer_img {
-    background-repeat: no-repeat;
-    background-image: url(/src/assets/fon_footer1.jpg);
-    background-attachment: fixed;
-    background-size: cover;
-    height: 50vh;
-    width: 100%;
-}
 
 .sorted-gallery_btn {
-    border: 1px solid rgba(0, 0, 0, 0.9);
-    border-radius: 5px;
     display: block;
-    width: 100%;
+    width: auto;
     height: 100%;
     margin-bottom: 2px;
     cursor: pointer;
 }
+.sorted-gallery_top_btn {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.9);
+}
+.btn-background {
+    border: 1px solid rgba(0, 0, 0, 0.9);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
 
 .sorted-gallery_fon {
-    border: 1px solid rgba(0, 0, 0, 0.9);
     border-radius: 5px;
     padding: 10px;
 }
 
 .sorted-gallery_btn:hover {
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    /*border: 1px solid rgba(0, 0, 0, 0.3);*/
     background-color: rgb(233, 248, 250);
 }
 
-.sorted-gallery_logo {
-    width: 30px;
-    height: 30px;
-    margin: 0 20px;
-}
+/*.sorted-gallery_logo {*/
+/*    width: 30px;*/
+/*    height: 30px;*/
+/*    margin: 0 20px;*/
+/*}*/
 
 /*стрелочка на sorted-gallery*/
 .usefull-links:hover {
@@ -114,6 +76,7 @@
 .usefull-links {
     position: relative;
     width: 100%;
+    height: 17px;
 }
 
 .arrow {
@@ -125,4 +88,13 @@
 
 .info-div .active i {
     transform: rotate(180deg);
+}
+
+.footer_img {
+    background-repeat: no-repeat;
+    background-image: url(/src/assets/fon_footer1.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    height: 50vh;
+    width: 100%;
 }
