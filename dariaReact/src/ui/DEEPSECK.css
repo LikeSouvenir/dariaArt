@@ -1,0 +1,58 @@
+.artwork-card:hover img {
+    transform: scale(1.30);
+}
+/* Эффект для изображения внутри карточки */
+.artwork-card img {
+    transition: transform 1.3s ease;
+}
+/* Затемнение и текст при hover */
+.artwork-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.artwork-card:hover::before {
+    opacity: 1;
+}
+/* Текст поверх изображения при hover */
+.artwork-card .artwork-info {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    color: white;
+    z-index: 2;
+    transition: bottom 0.3s ease;
+}
+
+.artwork-card:hover .artwork-info {
+    bottom: 0;
+}
+.artwork-card {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.artwork-info { animation-delay: 0.1s; }
+.artwork-info:nth-child(2) { animation-delay: 0.2s; }
+.artwork-info:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

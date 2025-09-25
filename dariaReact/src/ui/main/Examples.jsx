@@ -40,7 +40,7 @@ export default function Examples() {
                     <Gallery_M path={'all'} load={isLentaOpen} />
                 </Tab>
                 <Tab eventKey="works" title="Работы">
-                    <div className="gallery-item">
+                    <div className="asdsad">
                         <div className="////////////////////////////////////////////////////////">
                             {metaInfo.length !== 0 && metaInfo.map((item) => (
                                 <div key={item.id}>

@@ -1,10 +1,11 @@
 import {useContext, useEffect, useState} from "react";
 import "./gallery_m.css"
+import  "/src/ui/DEEPSECK.css"
 import Masonry from "react-masonry-css";
 import {AppContext} from "../../../core/Context.jsx";
 import {Button} from "react-bootstrap";
 
-export default function Gallery_M({path, load}) {
+export default function Gallery_M({path, load, loadMethod}) {
     const {getImages} = useContext(AppContext);
     const [imgMetInf, setImgMetaInf] = useState([]);
 
@@ -12,14 +13,15 @@ export default function Gallery_M({path, load}) {
         async function loadImg() {
             if (!load) return;
             try {
-                setImgMetaInf(await getImages(path));
+                const method = loadMethod || getImages;
+                setImgMetaInf(await method(path));
             } catch (e) {
                 console.log('Ошибка получения мета-информации:', e);
                 setImgMetaInf([]);
             }
         }
         loadImg();
-    }, [load, path, getImages]);
+    }, [load, path, loadMethod, getImages]);
 
 
     const breakpointColumnsObj = {
@@ -44,6 +46,7 @@ export default function Gallery_M({path, load}) {
                     return (
                         <div key={index} className="gallery-item">
                             <img
+                                className="artwork-card"
                                 loading="lazy"
                                 alt={`Image ${img.id}`}
                                 src={imagePath}

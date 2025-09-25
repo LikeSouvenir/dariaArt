@@ -40,6 +40,7 @@ const AppProvider = ({children}) => {
             .then(async response => {
                 return await response.json();
             }).then(data => {
+                console.log("getworks");
                 console.log(data);
                 return data;
             });
@@ -47,8 +48,8 @@ const AppProvider = ({children}) => {
 
     const getImages = useCallback(async(path) => {
         return await fetch(`${BASE_URL}/getPathsImages/${path}`)
-            .then(response => {
-                return response.json();
+            .then(async response => {
+                return await response.json();
             }).then(data => {
                 console.log(data);
                 return data;
@@ -56,10 +57,22 @@ const AppProvider = ({children}) => {
                 console.log(err);
                 throw err;
             });
-    }, []);
+    }, [BASE_URL]);
 
+    const getSamplesImage = useCallback(async() => {
+        return await fetch(`${BASE_URL}/getSamplesImage`)
+            .then(async response => {
+                return await response.json();
+            }).then(data => {
+                console.log(data);
+                return data;
+            }).catch(err => {
+                console.log(err);
+                throw err;
+            });
+    }, [BASE_URL]);
     const value = {
-        getExamples, sendMessage, getImages, getWorks
+        getExamples, sendMessage, getImages, getWorks, getSamplesImage
     }
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }

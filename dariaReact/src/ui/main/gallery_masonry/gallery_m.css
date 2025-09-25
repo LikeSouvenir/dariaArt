@@ -4,7 +4,7 @@
     width: auto;
 }
 .my-masonry-grid_column {
-    padding-left: 20px; /* Отступ между колонками */
+    padding-left: 15px; /* Отступ между колонками */
     background-clip: padding-box;
 }
 .gallery-item {
@@ -20,6 +20,16 @@
     object-fit: cover;
     transition: transform 0.3s ease; /* Анимация при наведении */
 }
+/* Hover эффекты для карточек с artwork */
+.artwork-card {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.artwork-card:hover {
+    transform: scale(1.05);
+}
+
 .gallery-item.vertical {
     grid-row: span 2; /* Занимает 2 строки */
 }

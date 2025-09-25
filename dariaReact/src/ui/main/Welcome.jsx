@@ -1,14 +1,15 @@
 import Header from "../header/Header";
 import Container from "react-bootstrap/Container";
-// import Gallery_M from "./gallery_masonry/Gallery_M.jsx";
 import Footer from "../footer/Footer.jsx";
 import {useNavigate} from "react-router-dom";
-import {useEffect, useRef, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import Gallery_M from "./gallery_masonry/Gallery_M.jsx";
+import {AppContext} from "../../core/Context.jsx";
 
 export default function Welcome() {
     const navigate = useNavigate();
     const galleryRef = useRef(null);
+    const {getSamplesImage} = useContext(AppContext);
     const [maxHeight, setMaxHeight] = useState("auto");
     useEffect(() => {
         if (galleryRef.current) {
@@ -53,7 +54,7 @@ export default function Welcome() {
             <div className="gallery-container"
                  ref={galleryRef}
                  style={{maxHeight}}>
-                <Gallery_M path={"all"}  load={true}/>
+                <Gallery_M loadMethod={getSamplesImage} load={true}/>
                 <div className="gallery-overlay">
                     <button
                         className="show-more-button"

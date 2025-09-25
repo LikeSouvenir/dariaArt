@@ -1,55 +1,55 @@
 import pool from './conf/db.js';
 
+const sampleImagesMainWindow = [12, 11, 23, 13, 29, 32, 26, 15, 30, 27, 16, 24];
+const getSamplesImage = async () => {
+    try {
+        const results = await pool.query("SELECT * FROM examples WHERE id = ANY ($1)",
+            [sampleImagesMainWindow]);
+        return results.rows;
+    } catch (error) {
+        throw error;
+    }
+}
 //запрос на получение списка работ
 const getWorks = async () => {
-    return new Promise(async (resolve, reject) => {
-        pool.query("SELECT * FROM works", (err, results) => {
-            if (err)
-                reject(err);
-            resolve(results.rows);
-        })
-    })
+    try {
+        const results = await pool.query("SELECT * FROM works");
+        return results.rows;
+    } catch (error) {
+        throw error;
+    }
 }
 // получение конкретной работы
 const getPathsImages = async (path) => {
-    // <Gallery_M path={'/src/assets/examples/*.{jpg,png,webp}'}/>
     const defPath = "/img/";
-    const imgExtensions = "%";
-    console.log(defPath + path + imgExtensions)
     const searchPath = `${defPath}${path}%`;
-    return await new Promise(function (resolve, reject) {
-        pool.query('SELECT * FROM examples WHERE img_path LIKE $1', [searchPath],
-            function (err, results) {
-                if (err)
-                    reject(err);
-                resolve(results.rows);
-            });
-    })
+    try {
+        const results = await pool.query('SELECT * FROM examples WHERE img_path LIKE $1', [searchPath])
+        return results.rows;
+    } catch (error) {
+        throw error;
+    }
 }
 
 const getExamples = async (mail) => {
-    return new Promise(function (resolve, reject) {
-        pool.query('INSERT INTO want_examples (email) VALUES ($1)',
-            [mail],
-            function (err, results) {
-                if (err) {
-                    reject(err);
-                }
-                resolve(results);
-            });
-    })
+    try {
+        const results = await pool.query('INSERT INTO want_examples (email) VALUES ($1)',
+            [mail])
+        return results.rows;
+    } catch (error) {
+        throw error;
+    }
 }
 
 const sendMessage = async (mail, message) => {
-    return await new Promise(function (resolve, reject) {
-        pool.query('INSERT INTO send_message (email, message) VALUES ($1, $2)',
-            [mail, message],
-            function (err, results) {
-                if (err)
-                    reject(err);
-                resolve(results);
-            });
-    })
+    try {
+        const results = await pool.query('INSERT INTO send_message (email, message) VALUES ($1, $2)',
+            [mail, message])
+        return results.rows;
+    } catch (error) {
+        throw error;
+    }
 }
 
-export {sendMessage, getExamples, getPathsImages, getWorks};
+
+export {sendMessage, getExamples, getPathsImages, getWorks, getSamplesImage};

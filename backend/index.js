@@ -1,5 +1,6 @@
 import express from "express";
 import * as db from "./db.js";
+import {getSamplesImage} from "./db.js";
 
 const app = express()
 
@@ -11,6 +12,14 @@ app.use(function (req, res, next) {
         next();
     }
 )
+app.get("/getSamplesImage", (req, res) => {
+    db.getSamplesImage().then(response => {
+        res.status(200).send(response);
+    }).catch(error => {
+        console.log("index.js error /getSamplesImage", error);
+        res.status(500).send(error);
+    })
+})
 app.get("/getWorks", (req, res) => {
     db.getWorks().then(response => {
         res.status(200).send(response);
@@ -22,7 +31,6 @@ app.get("/getWorks", (req, res) => {
     // запрос из бд на выборку
 app.get("/getPathsImages/:path", (req, res) => {
     const path = "all" ? "" : req.params.path;
-    console.log("path \t- \t" + path);
     db.getPathsImages(path).then(response => {
         console.log("сделать ограничение на конкретные слова sql")
         res.status(200).send(response);
