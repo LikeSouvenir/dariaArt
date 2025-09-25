@@ -1,8 +1,10 @@
-import {createContext, useCallback} from "react";
+import {createContext, useCallback, useState} from "react";
 
 const AppContext = createContext({})
 const AppProvider = ({children}) => {
     const BASE_URL = import.meta.env.VITE_API_URL;
+
+    const [isLogoFocused, setIsLogoFocused] = useState(false);
 
     async function getExamples(email) {
         return await fetch(`${BASE_URL}/getExamples`, {
@@ -72,7 +74,7 @@ const AppProvider = ({children}) => {
             });
     }, [BASE_URL]);
     const value = {
-        getExamples, sendMessage, getImages, getWorks, getSamplesImage
+        getExamples, sendMessage, getImages, getWorks, getSamplesImage,
     }
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }

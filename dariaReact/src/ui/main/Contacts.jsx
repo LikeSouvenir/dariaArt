@@ -4,6 +4,7 @@ import Header from "../header/Header.jsx";
 import Footer from "../footer/Footer.jsx";
 import {useContext, useState} from "react";
 import {AppContext} from "../../core/Context.jsx";
+import Messengers from "../Messengers.jsx";
 
 export default function Contacts() {
     const {sendMessage} = useContext(AppContext);
@@ -15,6 +16,7 @@ export default function Contacts() {
         const val = await sendMessage(e.target[0].value, e.target[1].value);
         setMessage(val ? "Успешно отправлено" : "Ошибка, пиьсмо не отправлено");
     }
+
     return (
         <>
             <Header/>
@@ -45,18 +47,9 @@ export default function Contacts() {
                             {message ? <Form.Text>{message}</Form.Text> : null}
                         </div>
                     </Form>
-                    <div className="container text-center pt-4">
-                        <div className="row align-items-start">
-                            <img className="col" style={{"max-height": '30px'}} height="100%"
-                                 src='./src/assets/logo/instagram.svg'/>
-                            <img className="col" style={{"max-height": '30px'}} height="100%"
-                                 src='./src/assets/logo/icons8-vk.svg'/>
-                            <img className="col" style={{"max-height": '30px'}} height="100%"
-                                 src='./src/assets/logo/telegram.svg'/>
-                            <img className="col" style={{"max-height": '30px'}} height="100%"
-                                 src='./src/assets/logo/whatsapp.svg'/>
-                        </div>
-                    </div>
+                    <Container className="text-center py-3">
+                        <Messengers/>
+                    </Container>
                 </Container>
             </div>
             <Footer/>

@@ -36,7 +36,7 @@ export default function Examples() {
                 id="uncontrolled-tab-example"
                 className="mb-3" fill
             >
-                <Tab eventKey="lenta" title="Лента">
+                <Tab eventKey="lenta" title="Лента" >
                     <Gallery_M path={'all'} load={isLentaOpen} />
                 </Tab>
                 <Tab eventKey="works" title="Работы">
