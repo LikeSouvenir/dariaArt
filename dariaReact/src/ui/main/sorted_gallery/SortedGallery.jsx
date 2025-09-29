@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 export default function SortedGallery({name, description, path}) {
     // при открытие запоминать где находиться экран, и при закрытие возвращатся туда же
     const [open, setOpen] = useState(false);
+    const [isChoose, setIsChoose] = useState(false);
     const startPlace = useRef(null);
 
     function handleClose() {
@@ -16,8 +17,10 @@ export default function SortedGallery({name, description, path}) {
     return (
         <>
             <div className="btn-background">
-                <btn
+                <button
+                    onMouseEnter={() => setIsChoose(!isChoose)}
                     className="sorted-gallery_btn sorted-gallery_top_btn"
+                    // style={isChoose ? {background: "rgb(233, 248, 250)"} : null}
                     onClick={handleClose}
                     aria-expanded={open}
                     ref={startPlace}
@@ -28,16 +31,16 @@ export default function SortedGallery({name, description, path}) {
                             <p>{description}</p>
                         </Container>
                         {/*download and view icons ////////////////////////////*/}
-                        {/*<Container className="text-end h-50">*/}
-                        {/*    <img className="h-25 sorted-gallery_logo"*/}
-                        {/*         src='./src/assets/logo/icons8-вставка-64.png'/>*/}
+                        <Container className="text-end h-25">
+                            <img className="h-25 sorted-gallery_logo"
+                                 src='./src/assets/logo/icons8-вставка-64.png'/>
                         {/*карусель*/}
-                        {/*    <img className="h-25 sorted-gallery_logo"*/}
-                        {/*         src='./src/assets/logo/icons8-открытая-книга-48.png'/>*/}
-                        {/*    72*/}
-                        {/*</Container>*/}
+                            <img className="h-25 sorted-gallery_logo"
+                                 src='./src/assets/logo/icons8-открытая-книга-48.png'/>
+                            {/*72*/}
+                        </Container>
                     </div>
-                </btn>
+                </button>
                 <Collapse in={open}>
                     <div className="pt-3 px-2">
                         <Gallery_M path={path} load={open}/>
@@ -45,10 +48,12 @@ export default function SortedGallery({name, description, path}) {
                 </Collapse>
 
                 <btn
-                    className="sorted-gallery_btn"
+                    // onMouseEnter={() => setIsChoose(!isChoose)}
+                    // style={activeIndex === index ? { color: item.classNameActive } : {color: "rgb(100,100,100)"}}
+                    // style={isChoose ? {background: "rgb(233, 248, 250)"} : null}
                     onClick={() => setOpen(!open)}
                     aria-expanded={open}
-                    style={{cursor: open ? 'default' : 'pointer'}}
+                    // style={{cursor: open ? 'default' : 'pointer'}}
                 >
                     <div className="text-center usefull-links">
                         <div className={open ? "arrow-open" : "arrow"}>{">"}</div>

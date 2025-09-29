@@ -3,7 +3,7 @@ import {createContext, useCallback, useState} from "react";
 const AppContext = createContext({})
 const AppProvider = ({children}) => {
     const BASE_URL = import.meta.env.VITE_API_URL;
-
+    // const data
     const [isLogoFocused, setIsLogoFocused] = useState(false);
 
     async function getExamples(email) {
@@ -75,6 +75,7 @@ const AppProvider = ({children}) => {
     }, [BASE_URL]);
     const value = {
         getExamples, sendMessage, getImages, getWorks, getSamplesImage,
+        isLogoFocused, setIsLogoFocused
     }
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }

@@ -17,8 +17,8 @@ export default function Header() {
     const menuValues = [
         { navPath: "/", name: 'Главная', classNameActive: "rgb(214, 134, 0)" },
         { navPath: "/about", name: 'Обо мне', classNameActive: "rgb(214, 134, 143)" },
-        { navPath: "/examples", name: 'Портфолио', classNameActive: "rgb(124, 191, 143)" },
-        { navPath: "/contacts", name: 'Контакты', classNameActive: "rgb(124, 191, 220)" },
+        { navPath: "/examples", name: 'Портфолио', classNameActive: "rgb(94,168,115)" },
+        { navPath: "/contacts", name: 'Контакты', classNameActive: "rgb(90,147,172)" },
     ]
     const activeIndex = menuValues.findIndex(item => item.navPath === location.pathname);
 
@@ -41,9 +41,7 @@ export default function Header() {
                             {menuValues.map((item, index) => (
                                 <Nav.Link
                                     onClick={() => navigate(item.navPath)}
-                                    // style={{ color: "#0d6efd" }}
                                     style={activeIndex === index ? { color: item.classNameActive } : {color: "rgb(100,100,100)"}}
-                                    // className={activeIndex === index ? item.classNameActive : "text-muted"}
                                     key={index}>
                                     {item.name}
                                 </Nav.Link>

@@ -30,7 +30,7 @@ app.get("/getWorks", (req, res) => {
 })
     // запрос из бд на выборку
 app.get("/getPathsImages/:path", (req, res) => {
-    const path = "all" ? "" : req.params.path;
+    const path = req.params.path === "all" ? "" : req.params.path;
     db.getPathsImages(path).then(response => {
         console.log("сделать ограничение на конкретные слова sql")
         res.status(200).send(response);

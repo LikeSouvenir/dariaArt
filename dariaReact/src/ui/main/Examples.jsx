@@ -5,6 +5,7 @@ import {Button, Tab, Tabs} from "react-bootstrap";
 import SortedGallery from "./sorted_gallery/SortedGallery.jsx";
 import {useContext, useState} from "react";
 import {AppContext} from "../../core/Context.jsx";
+import backdrop from "bootstrap/js/src/util/backdrop.js";
 
 
 export default function Examples() {
@@ -24,12 +25,15 @@ export default function Examples() {
 
     return (
         <>
+            {/*<Navbar sticky="top" className="fw-medium bg-white">*/}
+            <div className="sticky-top">
             <Header/>
 
             {/*<div className="container d-grid">*/}
             {/*    <Button onClick={loadWorks} variant="outline-info" size="lg">GET WORKS</Button>*/}
             {/*</div>*/}
 
+            </div>
             <Tabs
                 defaultActiveKey="lenta"
                 onSelect={(key) => key === "works" ? loadWorks() : setIsLentaOpen(!isLentaOpen)}
@@ -37,22 +41,18 @@ export default function Examples() {
                 className="mb-3" fill
             >
                 <Tab eventKey="lenta" title="Лента" >
-                    <Gallery_M path={'all'} load={isLentaOpen} />
+                    <Gallery_M path={'all'} load={isLentaOpen}/>
                 </Tab>
-                <Tab eventKey="works" title="Работы">
-                    <div className="asdsad">
-                        <div className="////////////////////////////////////////////////////////">
-                            {metaInfo.length !== 0 && metaInfo.map((item) => (
-                                <div key={item.id}>
-                                    <SortedGallery
-                                        name={item.name}
-                                        description={item.description}
-                                        path={item.path}
-                                    />
-                                </div>
-                            ))}
+                <Tab eventKey="works" title="Список работ">
+                    {metaInfo.length !== 0 && metaInfo.map((item) => (
+                        <div key={item.id}>
+                            <SortedGallery
+                                name={item.name}
+                                description={item.description}
+                                path={item.path}
+                            />
                         </div>
-                    </div>
+                    ))}
                 </Tab>
             </Tabs>
 
